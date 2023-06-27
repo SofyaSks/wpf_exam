@@ -1,0 +1,54 @@
+﻿<Window x:Class="wpf_exam.InfographicWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_exam"
+        mc:Ignorable="d"
+        Title="InfographicWindow" Height="450" Width="800" FontSize="18">
+
+    <Window.Resources>
+        <Style TargetType="Rectangle">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Canvas.Bottom" Value="35"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Canvas.Bottom" Value="5"/>
+        </Style>
+    </Window.Resources>
+    
+    <TabControl>
+            <TabItem Header="Диаграммы">
+                <TabItem.Content>
+                    <DockPanel>
+                        <Button Click="Button_Click" DockPanel.Dock="Bottom" Padding="10">OK</Button>
+                    <UniformGrid >
+                        <Button Background="White" Margin="10" Click="Button_Click_Daigramm">
+                            <Image Source="dia.png"/>
+                        </Button>
+                        <Button Background="White" Margin="10" Click="Button_Click_PieChart">
+                            <Image Source="pie.png"/>
+                        </Button>
+                    </UniformGrid>
+                </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+            
+        
+            <TabItem Header="Сводная таблица">
+            <TabItem.Content>
+                <DataGrid  IsReadOnly="True" ItemsSource="{Binding}"
+              AutoGenerateColumns="False" CanUserAddRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Месяц" Binding="{Binding MonthName}" />
+                        <DataGridTextColumn Header="2021" Binding="{Binding Finances}"/>
+                        <DataGridTextColumn Header="2022"/>
+                        <DataGridTextColumn Header="2023"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem.Content>
+        </TabItem>
+        </TabControl>
+
+</Window>
